@@ -3,12 +3,10 @@ import { Link as RouterLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <Box bg="blue.500" px={4} py={2}>
-      <Flex align="center">
+    <Box bg="brand.700" px={4} py={2}>
+      <Flex alignItems="center">
         <Heading as="h1" size="lg" color="white">
-          <Link as={RouterLink} to="/">
-            Electronics Store
-          </Link>
+          E-Shop
         </Heading>
         <Spacer />
         <Flex>

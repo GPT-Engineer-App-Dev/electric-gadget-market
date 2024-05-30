@@ -1,55 +1,56 @@
-import { Box, Container, VStack, Text, Image, Grid, GridItem, Heading, Link } from "@chakra-ui/react";
-import { Link as RouterLink } from "react-router-dom";
+import { Container, Text, VStack, Box, SimpleGrid, Image } from "@chakra-ui/react";
+import Navbar from "../components/Navbar";
 
-const products = [
+const sampleProducts = [
   {
     id: 1,
     name: "Smartphone",
-    description: "Latest model with advanced features",
-    image: "smartphone.jpg",
+    image: "/images/smartphone.jpg",
     price: "$699",
   },
   {
     id: 2,
     name: "Laptop",
-    description: "High performance laptop for work and play",
-    image: "laptop.jpg",
+    image: "/images/laptop.jpg",
     price: "$999",
   },
   {
     id: 3,
     name: "Tablet",
-    description: "Portable and powerful tablet",
-    image: "tablet.jpg",
+    image: "/images/tablet.jpg",
     price: "$499",
   },
 ];
 
 const Index = () => {
   return (
-    <Container maxW="container.xl" p={4}>
-      <VStack spacing={8}>
-        <Heading as="h1" size="2xl" textAlign="center" mt={8}>
-          Welcome to Electronics Store
-        </Heading>
-        <Grid templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }} gap={6}>
-          {products.map((product) => (
-            <GridItem key={product.id} borderWidth="1px" borderRadius="lg" overflow="hidden">
-              <Image src={product.image} alt={product.name} />
-              <Box p={6}>
-                <Heading as="h3" size="lg" mb={2}>
-                  {product.name}
-                </Heading>
-                <Text>{product.description}</Text>
-                <Text fontWeight="bold" mt={2}>
-                  {product.price}
-                </Text>
-              </Box>
-            </GridItem>
-          ))}
-        </Grid>
-      </VStack>
-    </Container>
+    <>
+      <Navbar />
+      <Container maxW="container.xl" py={8}>
+        <VStack spacing={4} align="stretch">
+          <Text fontSize="3xl" fontWeight="bold">
+            Welcome to E-Shop
+          </Text>
+          <Text fontSize="xl">Your one-stop shop for all your electronic needs.</Text>
+          <Box>
+            <Text fontSize="2xl" mb={4}>
+              Featured Products
+            </Text>
+            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
+              {sampleProducts.map((product) => (
+                <VStack key={product.id} borderWidth="1px" borderRadius="lg" overflow="hidden" p={4}>
+                  <Image src={product.image} alt={product.name} boxSize="200px" objectFit="cover" />
+                  <Text fontSize="xl" fontWeight="bold">
+                    {product.name}
+                  </Text>
+                  <Text>{product.price}</Text>
+                </VStack>
+              ))}
+            </SimpleGrid>
+          </Box>
+        </VStack>
+      </Container>
+    </>
   );
 };
 
